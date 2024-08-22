@@ -9,6 +9,7 @@ from pamps.models.user import User, UserRequest, UserResponse
 
 router = APIRouter()
 
+
 @router.get("/", response_model=List[UserResponse])
 async def list_users(*, session: Session = ActiveSession):
     """List all users."""

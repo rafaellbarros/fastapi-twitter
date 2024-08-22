@@ -36,14 +36,11 @@ class HashedPassword(str):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v):
+    def validate(cls, v, values=None):
         """Accepts a plain text password and returns a hashed password."""
         if not isinstance(v, str):
             raise TypeError("string required")
 
         hashed_password = get_password_hash(v)
-        # you could also return a string here which would mean model.password
-        # would be a string, pydantic won't care but you could end up with some
-        # confusion since the value's type won't match the type annotation
-        # exactly
+        # Retorna a instância da classe HashedPassword com o valor hash
         return cls(hashed_password)

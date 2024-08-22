@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from .routes import main_router
 
 app = FastAPI(
@@ -6,7 +7,5 @@ app = FastAPI(
     version="0.1.0",
     description="Pamps is a posting app to clone twitter",
 )
-
-from .routes import main_router
 
 app.include_router(main_router)
