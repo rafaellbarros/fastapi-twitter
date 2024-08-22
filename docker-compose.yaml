@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   api:
     build:
@@ -8,7 +6,7 @@ services:
     ports:
       - '8000:8000'
     environment:
-      PAMPS_DB__uri: 'postgresql://postgres:postgres@db:5435/${PAMPS_DB:-pamps}'
+      PAMPS_DB__uri: 'postgresql://postgres:postgres@db:5432/${PAMPS_DB:-pamps}'
       PAMPS_DB__connect_args: '{}'
     volumes:
       - .:/home/app/api
@@ -22,8 +20,8 @@ services:
     volumes:
       - $HOME/.postgres/pamps_db/data/postgresql:/var/lib/postgresql/data
     ports:
-      # ATENÇÃO: Mude para 5432: se precisar acessar via host
-      - '5435:5432'
+      # ATENÇÃO: Mude para 5432 se precisar acessar via host
+      - '5432:5432'
     environment:
       - POSTGRES_DBS=pamps, pamps_test
       - POSTGRES_USER=postgres
